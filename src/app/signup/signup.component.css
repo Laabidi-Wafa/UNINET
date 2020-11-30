@@ -1,0 +1,31 @@
+.signup{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #eaeaea;
+    overflow: hidden;
+}
+.signup img{
+    filter: blur(1px);
+    -webkit-filter: blur(1px);  
+}
+.signup_box{
+    box-shadow: 5px 0 15px 5px rgb(0, 0, 0,.25), -5px 0 15px -5px rgb(0, 0, 0,.25);
+    color: #9d9da0;
+    z-index: 1;
+}
+.form{
+    margin-top: 50px;
+}
+.signup_box input[type=text],.signup_box input[type=password]{
+    border: none;
+    transition: all 0.1s ease-in;
+}
+.signup_box input[type=text]:focus,.signup_box input[type=password]:focus{
+    border-left: 5px solid #f4638d;
+    transition: all 0.1s ease-out;
+}
+a:hover{
+    text-decoration: none;
+}
