@@ -13,6 +13,7 @@ import { AdminPostComponent } from './admin-post/admin-post.component';
 import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdministrationComponent,
     AdminPostComponent,
     PageNotFoundComponent,
+    AdminDashboardComponent,
   ],
   imports: [ 
     HttpClientModule,
