@@ -14,7 +14,7 @@
                         <h1 class="text-center">Sign up</h1>
                         <h5 class="text-center text-muted">Create a free account and get started</h5>
                         <div class="col-md-6 mx-auto">
-                            <form class="ui big form" #signUpForm="ngForm" (ngSubmit)="signUpForm.form.valid && signUpUser(signUpForm)">
+                            <form class="ui big form" #signUpForm="ngForm" (ngSubmit)="signUpForm.form.valid && signUpUser(signUpForm)" ngForm>
                                 <div class="field">
                                     <label>First name</label>
                                     <input type="text" class="shadow p-3" [(ngModel)]="signUpForm.firstname" name="firstName" #firstName="ngModel"
