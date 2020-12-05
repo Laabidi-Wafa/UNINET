@@ -14,7 +14,7 @@
                     <div class="col-md-12 mt-5">
                         <h1 class="display-4 text-center">WELCOME TO UNINET</h1>
                         <div class="col-md-6 mx-auto">
-                            <form class="ui big form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+                            <form class="ui big form" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && loginUser(loginForm)">
 
                                 
                                 <div class="field">
@@ -22,26 +22,21 @@
                                     <input type="text" class="shadow p-3" id="email" name="email"
                                         [(ngModel)]="loginForm.email"
                                         #email="ngModel"
-                                        placeholder="email@address.com">
+                                        placeholder="email@address.com" [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid }" required email>
                                         <div *ngIf="email.invalid && (email.dirty || email.touched)">
                                             <div class="alert alert-danger" *ngIf="email.errors.required">
                                               Email is required.
                                             </div>
+                                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
                                 </div>
 
                                 <div class="field">
                                     <label>Password</label>
                                     <div class="ui icon input">
                                         <input type="password" class="shadow p-3" id="password" name="password" 
-                                        [(ngModel)]="loginForm.password" placeholder="Password" #password="ngModel">
-                                        <input type="password" 
-                                        class="shadow p-3"
-                                         id="password"
-                                          name="password" 
-                                        [(ngModel)]="loginForm.password"
-                                         placeholder="Password" 
-                                         minlength="6"
-                                         #password="ngModel">
+                                        [(ngModel)]="loginForm.password" placeholder="Password" #password="ngModel"
+                                        [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }">
+                                       
                                         <div *ngIf="password.invalid && (password.dirty || password.touched)">
                                             <div class="alert alert-danger" *ngIf="password.errors.required">
                                               Password is required.
