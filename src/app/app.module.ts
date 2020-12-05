@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ReportedPostsComponent } from './reported-posts/reported-posts.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AdminPostComponent,
     PageNotFoundComponent,
     AdminDashboardComponent,
+    ReportedPostsComponent,
+    EditProfileComponent,
   ],
   imports: [ 
     HttpClientModule,

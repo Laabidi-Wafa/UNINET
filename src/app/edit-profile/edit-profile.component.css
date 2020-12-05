@@ -1,0 +1,20 @@
+.input input[type=text],.input input[type=date],.input select,.input textarea,button{
+    background-color: #dbdbdb;
+    height: 45px;
+    resize: none;
+    border: none;
+    border-radius: 8px;
+}
+.badge{
+    background-color: #cccccc;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+.btn_update{
+    background-color : #cef9c6;
+    border-radius: 20px;
+}
+.cancel_btn{
+    background-color : transparent;
+}
