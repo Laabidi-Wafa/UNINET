@@ -14,44 +14,66 @@
                         <h1 class="text-center">Sign up</h1>
                         <h5 class="text-center text-muted">Create a free account and get started</h5>
                         <div class="col-md-6 mx-auto">
-                            <form class="ui big form" #signUpForm="ngForm" (ngSubmit)="signUpUser(signUpForm)">
+                            <form class="ui big form" #signUpForm="ngForm" (ngSubmit)="signUpForm.form.valid && signUpUser(signUpForm)">
                                 <div class="field">
                                     <label>First name</label>
-                                    <input type="text" class="shadow p-3" [(ngModel)]="signUpForm.firstname" name="firstname"
-                                        placeholder="Foulen">
+                                    <input type="text" class="shadow p-3" [(ngModel)]="signUpForm.firstname" name="firstName" #firstName="ngModel"
+                                        placeholder="Foulen" [ngClass]="{ 'is-invalid': signUpForm.submitted && firstName.invalid }" required>
+                                        <div *ngIf="signUpForm.submitted && firstName.invalid" class="invalid-feedback">
+                                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                                        </div>
                                 </div>
+
                                 <div class="field">
                                     <label>Last name</label>
-                                    <input type="text" class="shadow p-3" [(ngModel)]="signUpForm.lastname" name="lastname"
-                                        placeholder="Ben foulen">
+                                    <input type="text" class="shadow p-3" [(ngModel)]="signUpForm.lastname" name="lastName" #lastName="ngModel"
+                                        placeholder="Ben foulen" [ngClass]="{ 'is-invalid': signUpForm.submitted && lastName.invalid }" required>
+                                        <div *ngIf="signUpForm.submitted && lastName.invalid" class="invalid-feedback">
+                                            <div *ngIf="lastName.errors.required">Last Name is required</div>
+                                        </div>
                                 </div>
                                 <div class="field">
                                     <label>CIN</label>
                                     <div class="ui icon input">
-                                        <input type="text" class="shadow p-3" pattern="\d{8}" id="cin" name="cin" [(ngModel)]="signUpForm.cin"  placeholder="CIN">
+                                        <input type="text" #cin="ngModel" class="shadow p-3" pattern="\d{8}" id="cin" name="cin" [(ngModel)]="signUpForm.cin"  placeholder="CIN">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label>E-mail</label>
                                     <input type="email" class="shadow p-3" id="email" name="email"
-                                        [(ngModel)]="signUpForm.email"
-                                        placeholder="email@address.com">
+                                        [(ngModel)]="signUpForm.email" #email="ngModel"
+                                        placeholder="email@address.com" [ngClass]="{ 'is-invalid': signUpForm.submitted && email.invalid }" required email>
+                                        <div *ngIf="signUpForm.submitted && email.invalid" class="invalid-feedback" >
+                                            <div *ngIf="email.errors.required">Email is required</div>
+                                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                                        </div>
                                 </div>
                                 <div class="field">
                                     <label>Password</label>
                                     <div class="ui icon input">
-                                        <input type="password" class="shadow p-3" id="password" name="password" [(ngModel)]="signUpForm.password" placeholder="Password">
+                                        <input type="password" #password="ngModel" class="shadow p-3" id="password" name="password" [ngClass]="{ 'is-invalid': signUpForm.submitted && password.invalid }" required minlength="6" [(ngModel)]="signUpForm.password" placeholder="Password">
+                                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                                            <div *ngIf="password.errors.required">Password is required</div>
+                                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label>ٌRetype password</label>
                                     <div class="ui icon input">
-                                        <input type="password" class="shadow p-3" name="password" placeholder="Confirm your password">
+                                        <input type="password" #confirmPassword="ngModel" class="shadow p-3" name="confirmPassword" placeholder="Confirm your password" [ngClass]="{ 'is-invalid': signUpForm.submitted && confirmPassword.invalid }" required>
+                                        <div *ngIf="signUpForm.submitted && confirmPassword.invalid" class="invalid-feedback">
+                                            <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+                                            <div *ngIf="confirmPassword.errors.mustMatch">Passwords must match</div>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div class="field d-flex-inline">
-                                    <p><input type="checkbox" class="mr-2" name="terms_checkbox" id="terms_checkbox">I have accepted the <a href="#">Terms & Conditions.</a></p>
+                                    <p><input type="checkbox" class="mr-2" #acceptTerms="ngModel" name="acceptTerms" id="acceptTerms" #acceptTerms="ngModel" [ngClass]="{ 'is-invalid': signUpForm.submitted && acceptTerms.invalid }" required>I have accepted the <a href="#">Terms & Conditions.</a></p>
+                                    <div *ngIf="signUpForm.submitted && acceptTerms.invalid" class="invalid-feedback">Accept Ts & Cs is required</div>
                                 </div>
+
                                 <div class="field text-center">
                                     <button type="submit" class="ui secondary w-75 huge icon button shadow-sm" >
                                         Sign up now

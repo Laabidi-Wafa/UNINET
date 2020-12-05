@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ReportedPostsComponent } from './reported-posts/reported-posts.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { MustMatchDirective } from './_helpers/must-match.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +32,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     AdminDashboardComponent,
     ReportedPostsComponent,
     EditProfileComponent,
+    MustMatchDirective
   ],
   imports: [ 
     HttpClientModule,
