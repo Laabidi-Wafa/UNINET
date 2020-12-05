@@ -15,27 +15,56 @@
                         <h1 class="display-4 text-center">WELCOME TO UNINET</h1>
                         <div class="col-md-6 mx-auto">
                             <form class="ui big form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+
+                                
                                 <div class="field">
                                     <label>E-mail</label>
                                     <input type="text" class="shadow p-3" id="email" name="email"
                                         [(ngModel)]="loginForm.email"
+                                        #email="ngModel"
                                         placeholder="email@address.com">
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                                            <div class="alert alert-danger" *ngIf="email.errors.required">
+                                              Email is required.
+                                            </div>
                                 </div>
+
                                 <div class="field">
                                     <label>Password</label>
                                     <div class="ui icon input">
-                                        <input type="password" class="shadow p-3" id="password" name="password" [(ngModel)]="loginForm.password" placeholder="Password">
+                                        <input type="password" class="shadow p-3" id="password" name="password" 
+                                        [(ngModel)]="loginForm.password" placeholder="Password" #password="ngModel">
+                                        <input type="password" 
+                                        class="shadow p-3"
+                                         id="password"
+                                          name="password" 
+                                        [(ngModel)]="loginForm.password"
+                                         placeholder="Password" 
+                                         minlength="6"
+                                         #password="ngModel">
+                                        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                                            <div class="alert alert-danger" *ngIf="password.errors.required">
+                                              Password is required.
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="password.errors.minlength">
+                                                Password should be at least 6 characters
+                                              </div>
                                     </div>
                                 </div>
+                                </div>
+
+
                                 <div class="field">
                                     <p class="float-right">Forget password ?</p>
                                 </div>
+
                                 <div class="field">
                                     <button type="submit" class="ui basic right huge icon button float-right shadow-sm">
                                         LOGIN
                                         <i class="sign-in icon"></i>
                                     </button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
